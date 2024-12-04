@@ -7,8 +7,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.SnapshotMutationPolicy
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import com.bnyro.contacts.enums.BackupType
-import com.bnyro.contacts.obj.AccountType
+import com.bnyro.contacts.domain.enums.BackupType
+import com.bnyro.contacts.domain.model.AccountType
 
 object Preferences {
     private const val prefFile = "preferences"
@@ -19,6 +19,7 @@ object Preferences {
     const val themeKey = "theme"
     const val backupDirKey = "backupDir"
     const val backupTypeKey = "backupType"
+    const val backupNamingSchemeKey = "backupNamingScheme"
     const val sortOrderKey = "sorting"
     const val hiddenAccountsKey = "hiddenAccounts"
     const val backupIntervalKey = "backupInterval"
@@ -29,6 +30,8 @@ object Preferences {
     const val encryptBackupPasswordKey = "encryptBackupsPassword"
     const val storeSmsLocallyKey = "storeSmsLocally"
     const val lastChosenAccount = "lastChosenAccount"
+    const val biometricAuthKey = "biometricAuth"
+    const val favoritesOnlyKey = "favoritesOnly"
 
     fun init(context: Context) {
         preferences = context.getSharedPreferences(prefFile, Context.MODE_PRIVATE)

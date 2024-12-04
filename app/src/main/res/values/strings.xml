@@ -39,6 +39,7 @@
     <string name="website">Website</string>
     <string name="photo">Photo</string>
     <string name="phone_number">Phone number</string>
+    <string name="favorite">Favorite</string>
     <!-- Sorting and filter -->
     <string name="sort_order">Sort order</string>
     <string name="account_type">Account type</string>
@@ -47,6 +48,7 @@
     <string name="last_name">Last name</string>
     <string name="nick_name">Nickname</string>
     <string name="organization">Organization</string>
+    <string name="favorites_only">Favorites only</string>
     <!-- Types -->
     <string name="type">Type</string>
     <string name="home">Home</string>
@@ -81,6 +83,7 @@
     <!-- Sms -->
     <string name="messages">Messages</string>
     <string name="send">Send message</string>
+    <string name="cant_respond">Can\'t respond</string>
     <string name="reply">Reply</string>
     <string name="connection_error">Could not connect. Please ensure airplane mode is off.</string>
     <string name="message_too_long">Message is too long!</string>
@@ -89,9 +92,19 @@
     <string name="private_sms_database_desc">The SMS will only be stored within the app and not be accessible in other apps.</string>
     <string name="delete_thread">Delete thread</string>
     <string name="delete_message">Delete message</string>
+    <!-- Dialer -->
+    <string name="in_progress">In progress</string>
+    <string name="ringing">Ringing…</string>
+    <string name="disconnecting">Disconnecting…</string>
+    <string name="connecting">Connecting…</string>
+    <string name="confirm_start_call">Do you want to call %1$s?</string>
+    <string name="mute">Mute</string>
+    <string name="speakers">Speakers</string>
     <!-- Import & Export -->
     <string name="import_vcf">Import vCard</string>
     <string name="export_vcf">Export vCard</string>
+    <string name="import_sms">Import SMS</string>
+    <string name="export_sms">Export SMS</string>
     <string name="import_sim">Import from SIM</string>
     <string name="import_confirm">Do you want to import the selected VCF file?</string>
     <!-- Settings -->
@@ -103,6 +116,8 @@
     <string name="dark">Dark</string>
     <string name="auto_backup">Automatic backup</string>
     <string name="backup_interval">Backup interval</string>
+    <string name="backup_naming_scheme">Backup naming scheme</string>
+    <string name="backup_naming_scheme_hint">%d: date, %t: time, %s: source (local, device), source is required and either date or time</string>
     <string name="max_backup_amount">Max amount of backups</string>
     <string name="choose_dir">Directory</string>
     <string name="both">Both</string>
@@ -115,6 +130,9 @@
     <string name="backup">Backup</string>
     <string name="encrypt_backups">Encrypt backups as zip</string>
     <string name="backup_password">Password</string>
+    <string name="security">Security</string>
+    <string name="biometric_authentication">Biometric Authentication</string>
+    <string name="biometric_authentication_summary">Require biometric authentication (e.g. fingerprint) before the app can be accessed.</string>
     <!-- About -->
     <string name="about">About</string>
     <string name="license">License</string>
@@ -129,4 +147,23 @@
     <string name="add_event">Add Event</string>
     <string name="date">Date</string>
     <string name="amoled">Amoled</string>
+    <string name="calls">Calls</string>
+    <string name="decline">Decline</string>
+    <string name="accept">Accept</string>
+    <string name="unknown_number">Unknown Number</string>
+    <string name="dial_pad">Dialpad</string>
+    <string name="call_ended">Call Ended</string>
+    <string name="dialing">Dialing...</string>
+    <string name="call_from">Call From</string>
+    <string name="key_pad">Keypad</string>
+    <string name="select_custom_ringtone">Select custom ringtone</string>
+    <string name="change_ringtone">Change ringtone</string>
+    <string name="recent_calls">Recent calls</string>
+    <string name="block_numbers">Block numbers</string>
+    <string name="blocking_number_is_not_supported">Blocking number is not supported, Connect You is not the default SMS/Phone app</string>
+    <string name="number_blocked">Number blocked</string>
+    <string name="block_number">Block number</string>
+    <string name="unblock_number">Unblock number</string>
+    <string name="search_contacts">Search contacts</string>
+    <string name="start_a_new_conversation">Start a new conversation</string>
 </resources>

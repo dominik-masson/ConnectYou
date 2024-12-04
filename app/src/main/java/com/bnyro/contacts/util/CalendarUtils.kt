@@ -10,20 +10,24 @@ object CalendarUtils {
     val isoDateFormat = SimpleDateFormat("yyyy-MM-dd")
 
     @SuppressLint("SimpleDateFormat")
+    val isoTimeFormat = SimpleDateFormat("HH:mm:ss")
+
+    @SuppressLint("SimpleDateFormat")
     val isoDateFormatWithoutYear = SimpleDateFormat("MM-dd")
 
     @SuppressLint("SimpleDateFormat")
-    val isoTimeFormat = SimpleDateFormat("yyyy-MM-dd-HH:mm:ss")
+    val isoDateTimeFormat = SimpleDateFormat("yyyy-MM-dd-HH:mm:ss")
     private val localizedFormat get() = DateFormat.getDateInstance()
 
     fun millisToDate(milliSeconds: Long, formatter: DateFormat = localizedFormat): String {
         val calendar = Calendar.getInstance()
         calendar.clear(Calendar.ZONE_OFFSET)
         calendar.timeInMillis = milliSeconds
+
         return formatter.format(calendar.time)
     }
 
-    fun dateToMillis(date: String) = isoDateFormat.parse(date)?.time
+    fun dateToMillis(date: String) = kotlin.runCatching { isoDateFormat.parse(date) }.getOrNull()?.time
 
     fun localizeIsoDate(isoDate: String): String {
         val isDateWithoutYear = isoDate.startsWith('-')
@@ -45,6 +49,12 @@ object CalendarUtils {
 
     fun getCurrentDateTime(): String {
         val calendar = Calendar.getInstance()
-        return isoTimeFormat.format(calendar.time)
+        return isoDateTimeFormat.format(calendar.time)
+    }
+
+    fun getCurrentDateAndTime(): Pair<String, String> {
+        val calendar = Calendar.getInstance()
+
+        return isoDateFormat.format(calendar.time) to isoTimeFormat.format(calendar.time)
     }
 }

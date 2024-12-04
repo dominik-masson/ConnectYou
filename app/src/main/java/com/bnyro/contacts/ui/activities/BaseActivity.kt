@@ -7,22 +7,22 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.provider.Telephony
-import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
-import com.bnyro.contacts.ui.models.ContactsModel
-import com.bnyro.contacts.ui.models.SmsModel
-import com.bnyro.contacts.ui.models.ThemeModel
+import com.bnyro.contacts.presentation.screens.contacts.model.ContactsModel
+import com.bnyro.contacts.presentation.screens.settings.model.ThemeModel
+import com.bnyro.contacts.presentation.screens.sms.model.SmsModel
 import com.bnyro.contacts.util.NotificationHelper
 import com.bnyro.contacts.util.PermissionHelper
 
-abstract class BaseActivity : ComponentActivity() {
+abstract class BaseActivity : FragmentActivity() {
     lateinit var themeModel: ThemeModel
     val contactsModel by viewModels<ContactsModel> {
         ContactsModel.Factory
     }
-    val smsModel by viewModels<SmsModel> { SmsModel.Factory }
+    val smsModel by viewModels<SmsModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ abstract class BaseActivity : ComponentActivity() {
             val roleManager = context.getSystemService(RoleManager::class.java)
             if (roleManager!!.isRoleAvailable(RoleManager.ROLE_SMS)) {
                 if (roleManager.isRoleHeld(RoleManager.ROLE_SMS)) {
-                    getSmsPermissions(context)
+                    getSmsPermissions()
                 } else {
                     val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_SMS)
                     context.startActivity(intent)
@@ -51,7 +51,7 @@ abstract class BaseActivity : ComponentActivity() {
             }
         } else {
             if (Telephony.Sms.getDefaultSmsPackage(context) == context.packageName) {
-                getSmsPermissions(context)
+                getSmsPermissions()
             } else {
                 val intent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
                 intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, context.packageName)
@@ -60,8 +60,8 @@ abstract class BaseActivity : ComponentActivity() {
         }
     }
 
-    private fun getSmsPermissions(context: Context) {
-        PermissionHelper.checkPermissions(context, smsPermissions)
+    private fun getSmsPermissions() {
+        PermissionHelper.checkPermissions(this, smsPermissions)
     }
 
     companion object {
